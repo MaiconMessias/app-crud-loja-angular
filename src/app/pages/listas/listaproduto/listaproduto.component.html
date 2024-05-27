@@ -1,0 +1,27 @@
+<!-- TODO dialog para confirmação de exclusão -->
+<h3>Lista de Produtos</h3>
+<div class="grid-listaproduto" *ngIf="listaProduto; else semProdutos">
+    <a mat-raised-button routerLink="novo/produto">Novo</a>
+    <mat-card class="example-card" *ngFor="let produto of listaProduto">
+        <mat-card-header>
+            <mat-card-title>{{ produto.titulo }}</mat-card-title>
+        </mat-card-header>
+        <img mat-card-image id="foto" [src]='trataImagem(produto.foto)' alt="">
+        <mat-card-content>
+            <p>
+                {{ produto.descricao }} 
+            </p>
+            <p>
+                Link para edição: {{ produto.links![0].href }}
+            </p>
+    </mat-card-content>
+        <mat-card-actions>
+            <a mat-raised-button routerLink="editar/produto/{{ produto.id }}">Editar</a>
+            <a mat-raised-button href="{{ produto.links![0].href }}">Editar com link vindo do bd</a>
+            <button mat-raised-button (click)="deletarProduto(produto.id!)">Excluir</button>
+        </mat-card-actions>      
+    </mat-card>
+</div>
+<ng-template #semProdutos>
+    <h3>Não existem produtos cadastrados</h3>
+</ng-template>

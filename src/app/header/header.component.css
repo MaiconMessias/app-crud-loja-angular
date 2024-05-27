@@ -1,0 +1,13 @@
+.example-button {
+    margin-top: 16px;
+    border-radius: 3em;
+    
+  }
+  
+  .example-tooltip-uppercase {
+    text-transform: uppercase;
+  }
+
+  ol li {
+    list-style-type: none;
+  }

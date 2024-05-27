@@ -1,0 +1,29 @@
+<form (ngSubmit)="enviar()" [formGroup]="produtoForm" #formDir="ngForm" enctype="multipart/form-data">
+    <input type="hidden" formControlName="id">
+    <p>
+        <label for="titulo">Título</label>
+        <input type="text" placeholder="Coloque aqui um título" formControlName="titulo" required>
+    </p>
+    <p>
+        <label for="descricao">Descrição</label>
+        <input type="text" placeholder="Coloque aqui um descricao" formControlName="descricao" required>
+    </p>
+    <p>
+        <label for="preco">Preço</label>
+        <input type="text" placeholder="Coloque aqui um preco" formControlName="preco" required>
+    </p>
+    <p>
+        <label for="foto">Faça upload a imagem desejada</label>
+        <input type="file" (change)="onFileSelected($event)"/>
+    </p>
+    <!-- trata imagem carregada e exibe -->
+    <div *ngIf="produtoData && produtoData!.foto">
+        <img id="foto" [src]='trataImagem(produtoData!.foto)'/>
+    </div>
+    <!-- Exibe um preview da imagem ao escolher -->
+        <span id="h2-image"></span>
+    <p>
+        <input type="submit" value="{{ btnText }}">
+        <input type="button" value="Cancelar" (click)="cancelar()">
+    </p>
+</form>
