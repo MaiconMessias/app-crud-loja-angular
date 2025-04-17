@@ -14,8 +14,7 @@
     </mat-card-content>
         <mat-card-actions>
             <a mat-raised-button routerLink="editar/produto/{{ produto.id }}">Editar</a>
-
-            <button mat-raised-button (click)="deletarProduto(produto.id!)">Excluir</button>
+            <button mat-raised-button (click)="openDialogDelete(produto.id!)">Excluir</button>
         </mat-card-actions>
     </mat-card>
 </div>

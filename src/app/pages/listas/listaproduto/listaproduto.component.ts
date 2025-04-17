@@ -3,7 +3,6 @@ import { Produto } from '../../../entities/Produto';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { ProdutoService } from '../../../service/produto.service';
-import { DomSanitizer } from '@angular/platform-browser';
 import { Router, RouterModule } from '@angular/router';
 import { Util } from '../../../util/util';
 import {MatButtonModule} from '@angular/material/button';
@@ -11,6 +10,17 @@ import {MatCardModule} from '@angular/material/card';
 import { MessagesService } from '../../../service/messages.service';
 import {PaginationComponent} from "../../../util/pagination/pagination.component";
 import {PageEvent} from "@angular/material/paginator";
+// dialog
+import {
+  MatDialog,
+  MAT_DIALOG_DATA,
+  MatDialogRef,
+  MatDialogTitle,
+  MatDialogContent,
+  MatDialogActions,
+  MatDialogClose,
+} from '@angular/material/dialog';
+import {DialogTemplateComponent} from "../../../dialog/dialog-template/dialog-template.component";
 
 @Component({
   selector: 'app-listaproduto',
@@ -30,7 +40,8 @@ export class ListaprodutoComponent implements OnInit {
     constructor(private produtoService: ProdutoService,
                 private util: Util,
                 private messageService: MessagesService,
-                private router: Router
+                private router: Router,
+                public dialog: MatDialog
               ){}
 
     ngOnInit(): void {
@@ -54,14 +65,23 @@ export class ListaprodutoComponent implements OnInit {
     return this.util.trataImagem(file);
   }
 
+  openDialogDelete(id: number): void {
+    const dialogRef = this.dialog.open(DialogTemplateComponent);
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result == true)
+        this.deletarProduto(id);
+    });
+  }
+
   deletarProduto(id: number){
-    this.produtoService.excluirPrduto(id).subscribe();
-    //this.messageService.add("Produto deletado com sucesso !." );
-    this.messageService.tempoRestante();
+    this.produtoService.excluirPrduto(id).subscribe((mensagem) => { console.log(mensagem); this.getListaroduto(); });
+    this.messageService.add("Produto deletado com sucesso !." );
+    //this.messageService.tempoRestante();
     // TODO colocar tela em modal
-    setTimeout(() => {
+    /*setTimeout(() => {
       window.location.reload();
-    }, 4000);
+    }, 4000);*/
 
   }
 
