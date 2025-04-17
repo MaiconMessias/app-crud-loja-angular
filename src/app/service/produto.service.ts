@@ -18,6 +18,10 @@ export class ProdutoService {
     return this.http.get<Produto>(`/api/produto/${id}`);
   }
 
+  getProdutoPorPagina(pagina: number, pageSize: number): Observable<Produto[]>{
+    return this.http.get<Produto[]>(`/api/listaprodutopaginacao/${pagina}/${pageSize}`);
+  }
+
   cadastraProduto(formData: FormData): Observable<FormData>{
     return this.http.post<FormData>('/api/produto/salvar', formData);
   }

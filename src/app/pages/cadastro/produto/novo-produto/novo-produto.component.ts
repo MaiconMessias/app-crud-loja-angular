@@ -27,11 +27,11 @@ export class NovoProdutoComponent {
     formData.append("descricao", produto.descricao);
     formData.append("preco", String(produto.preco));
     if (String(produto.foto) != '') {
-      formData.append("foto", produto.foto);
+      formData.append("fotoDto", produto.foto);
     }
 
-    await this.produtoService.cadastraProduto(formData).subscribe(() => { 
-      //window.location.reload() 
+    await this.produtoService.cadastraProduto(formData).subscribe(() => {
+      //window.location.reload()
       this.messageService.add("Produto criado com sucesso !");
 
       this.router.navigate(["/listaProduto"])

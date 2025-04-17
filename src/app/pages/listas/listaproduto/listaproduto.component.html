@@ -9,19 +9,18 @@
         <img mat-card-image id="foto" [src]='trataImagem(produto.foto)' alt="">
         <mat-card-content>
             <p>
-                {{ produto.descricao }} 
-            </p>
-            <p>
-                Link para edição: {{ produto.links![0].href }}
+                {{ produto.descricao }}
             </p>
     </mat-card-content>
         <mat-card-actions>
             <a mat-raised-button routerLink="editar/produto/{{ produto.id }}">Editar</a>
-            <a mat-raised-button href="{{ produto.links![0].href }}">Editar com link vindo do bd</a>
+
             <button mat-raised-button (click)="deletarProduto(produto.id!)">Excluir</button>
-        </mat-card-actions>      
+        </mat-card-actions>
     </mat-card>
 </div>
+<app-pagination [pageSize]="pageSize" [pageIndex]="pageIndex" [length]="length" (page)="handlePageEvent($event)"></app-pagination>
+
 <ng-template #semProdutos>
     <h3>Não existem produtos cadastrados</h3>
 </ng-template>

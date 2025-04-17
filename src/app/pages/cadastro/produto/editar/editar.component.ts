@@ -38,16 +38,16 @@ export class EditarComponent implements OnInit {
     formData.append("descricao", prod.descricao);
     formData.append("preco", String(prod.preco));
     if (String(prod.foto) != '') {
-      formData.append("foto", prod.foto);
+      formData.append("fotoDto", prod.foto);
     }
 
-    await this.produtoService.editaProduto(formData, prod.id!).subscribe(() => { 
-      //window.location.reload(); 
+    await this.produtoService.editaProduto(formData, prod.id!).subscribe(() => {
+      //window.location.reload();
       this.messageService.add("Produto editado com sucesso !");
 
       this.router.navigate(["/listaProduto"])
     });
-    
+
 
   }
 
