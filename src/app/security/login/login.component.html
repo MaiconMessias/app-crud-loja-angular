@@ -1,0 +1,15 @@
+<form (ngSubmit)="validar()" [formGroup]="usuarioForm" #formDir="ngForm">
+  <p>
+    <label for="username">Username</label>
+    <input type="text" placeholder="informe aqui um username" formControlName="username" required>
+  </p>
+  <p>
+    <label for="senha">Senha</label>
+    <input type="text" placeholder="Informe aqui uma senha" formControlName="senha" required>
+  </p>
+  <p>
+    <input type="submit" value="{{ btnText }}">
+    <input type="button" value="Cancelar" (click)="cancelar()">
+  </p>
+</form>
+

@@ -54,11 +54,15 @@ export class ListaprodutoComponent implements OnInit {
 
   async getListaroduto(){
       await this.produtoService.getProdutoPorPagina(0, this.pageSize).subscribe((produtos) => this.listaProduto = produtos);
-      // atualiza numero de páginas
-      await this.produtoService.getProdutos().subscribe((produtos) => this.length = produtos.length);
+      await this.getLenthProduto();
       // atualiza o indice para a página inicial
       this.pageIndex = 0;
     }
+
+  async getLenthProduto(){
+    // atualiza numero de páginas
+    await this.produtoService.getProdutos().subscribe((produtos) => this.length = produtos.length);
+  }
 
   // Trata e exibe a imagem gravada no bd de tipo blob
   trataImagem(file: Blob){

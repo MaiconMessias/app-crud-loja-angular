@@ -1,3 +1,12 @@
+<ol>
+  <li>
+    <a mat-raised-button routerLink="">Página Principal</a>
+  </li>
+
+  <li *ngIf="usuario.username">
+    <b>Olá {{usuario.username}}</b>
+  </li>
+</ol>
 <button mat-raised-button [matMenuTriggerFor]="menu">Menu</button>
 <mat-menu #menu="matMenu">
   <a mat-menu-item routerLink="listaProduto">Lista de Produto</a>
