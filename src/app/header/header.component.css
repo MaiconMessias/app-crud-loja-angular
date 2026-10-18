@@ -1,13 +1,42 @@
-.example-button {
-    margin-top: 16px;
-    border-radius: 3em;
-    
-  }
-  
-  .example-tooltip-uppercase {
-    text-transform: uppercase;
-  }
+.navbar-horizontal {
+  display: flex;
+  justify-content: space-between; /* Mantém logo na esquerda e links na direita */
+  align-items: center;
+  padding: 0 24px;
+  height: 64px;
+  box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2);
+}
 
-  ol li {
-    list-style-type: none;
-  }
+.navbar-logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 500;
+  font-size: 1.2rem;
+}
+
+.navbar-links {
+  display: flex;
+  align-items: center;
+  gap: 12px; /* Dá espaçamento entre os botões */
+}
+
+/* Garante alinhamento perfeito do ícone dentro do botão */
+.navbar-links a mat-icon {
+  margin-right: 4px;
+  vertical-align: middle;
+}
+
+/* Espaçador opcional para botões de fim */
+.spacer {
+  width: 16px;
+}
+
+.logout-btn {
+  border-color: rgba(255, 255, 255, 0.5) !important;
+  color: white !important;
+}
+
+.page-content {
+  padding: 32px;
+}

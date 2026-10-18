@@ -1,6 +1,33 @@
-<ol>
-  <li>
-    <a mat-raised-button routerLink="">Página Principal</a>
-  </li>
-</ol>
+<mat-toolbar color="primary" class="navbar-horizontal">
+  <!-- Logotipo ou Nome do Sistema à Esquerda -->
+  <div class="navbar-logo">
+    <mat-icon>layers</mat-icon>
+    <span>Meu Painel</span>
+  </div>
 
+  <!-- Links de Navegação Alinhados à Direita -->
+  <div class="navbar-links">
+    <a mat-button routerLink="">
+      <mat-icon>home</mat-icon>
+      Início
+    </a>
+
+    <a mat-button routerLink="listaProduto">
+      <mat-icon>local_offer</mat-icon>
+      Produtos
+    </a>
+
+    <a mat-button href="#configuracoes">
+      <mat-icon>settings</mat-icon>
+      Configurações
+    </a>
+
+    <span class="spacer"></span>
+
+    <!-- Botão de Ação Destacado -->
+    <a mat-stroked-button href="#sair" class="logout-btn">
+      <mat-icon>exit_to_app</mat-icon>
+      Sair
+    </a>
+  </div>
+</mat-toolbar>

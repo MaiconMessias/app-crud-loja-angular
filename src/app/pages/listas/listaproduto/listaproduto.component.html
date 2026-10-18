@@ -1,27 +1,68 @@
 <!-- TODO dialog para confirmação de exclusão -->
-<h3>Lista de Produtos</h3>
+<div class="page-container">
+  <!-- Título formatado usando a tipografia padrão -->
+  <h1 class="mat-headline-medium title-page">Lista de Produtos</h1>
+</div>  
+
 <div class="grid-listaproduto" *ngIf="listaProduto; else semProdutos">
-    <a mat-raised-button routerLink="novo/produto">Novo</a>
-    <mat-card class="example-card" *ngFor="let produto of listaProduto">
-        <mat-card-header>
-            <mat-card-title>{{ produto.titulo }}</mat-card-title>
-        </mat-card-header>
+
+    <!-- Topo da página com botão Novo -->
+    <div class="page-header">
+      <button mat-raised-button color="primary" routerLink="novo/produto">
+        <mat-icon>add</mat-icon>
+        Novo
+      </button>
+    </div>
+
+    <mat-card class="product-card" appearance="outlined" *ngFor="let produto of listaProduto">
+      
+      <!-- Cabeçalho com o Título (Ex: Dr.) -->
+      <mat-card-header>
+        <mat-card-title class="product-title">{{ produto.titulo }}</mat-card-title>
+      </mat-card-header>
+
+      <!-- Imagem do Produto/Perfil -->
+      <div class="image-wrapper">
         <img mat-card-image id="foto" [src]='trataImagem(produto.foto)' alt="">
-        <mat-card-content>
-            <p>
-                {{ produto.descricao }} 
-            </p>
-            <p>
-                Link para edição: {{ produto.links![0].href }}
-            </p>
-    </mat-card-content>
-        <mat-card-actions>
-            <a mat-raised-button routerLink="editar/produto/{{ produto.id }}">Editar</a>
-            <a mat-raised-button href="{{ produto.links![0].href }}">Editar com link vindo do bd</a>
-            <button mat-raised-button (click)="deletarProduto(produto.id!)">Excluir</button>
-        </mat-card-actions>      
+      </div>
+
+      <!-- Conteúdo/Descrição -->
+      <mat-card-content class="product-content">
+        <p class="product-description">
+          {{ produto.descricao }} 
+        </p>
+        <p>
+            Link para edição: {{ produto.links![0].href }}
+        </p>
+
+      </mat-card-content>
+
+      <!-- Ações na base do card -->
+      <mat-card-actions class="product-actions">
+        <button mat-button color="primary" routerLink="editar/produto/{{ produto.id }}">
+          <mat-icon>edit</mat-icon>
+          Editar
+        </button>
+        <button mat-button color="warn" (click)="deletarProduto(produto.id!)">
+          <mat-icon>delete</mat-icon>
+          Excluir
+        </button>
+      </mat-card-actions>
+
     </mat-card>
+
 </div>
 <ng-template #semProdutos>
-    <h3>Não existem produtos cadastrados</h3>
+    <div class="page-container">
+        <mat-card class="empty-state-card">
+        <mat-card-content class="empty-content">
+        <!-- Ícone de caixa aberta/vazia que escolhemos antes -->
+        <mat-icon color="disabled" class="empty-icon">inventory_2</mat-icon>
+        
+        <h3 class="mat-title-medium">Nenhum produto por aqui</h3>
+        <p class="mat-body-medium text-muted">Não existem produtos cadastrados no momento.</p>
+        
+        </mat-card-content>
+    </mat-card>
+    </div>    
 </ng-template>

@@ -2,3 +2,55 @@
   width: 200px;
   height: 200px;
 }
+
+.page-container {
+  padding: 24px;
+  max-width: 800px; /* Evita que o card fique esticado demais em telas grandes */
+  margin: 0 auto;
+}
+
+.title-page {
+  margin-bottom: 20px;
+  color: #333333;
+  font-weight: 500;
+}
+
+/* Estilização do Card de Estado Vazio */
+.empty-state-card {
+  border: 1px dashed #b0bec5; /* Borda tracejada suave */
+  background-color: #fafafa;
+  box-shadow: none !important; /* Remove a sombra pesada para um visual clean */
+}
+
+.empty-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px !important;
+  text-align: center;
+}
+
+/* Ícone grande e cinza no centro */
+.empty-icon {
+  font-size: 64px;
+  width: 64px;
+  height: 64px;
+  margin-bottom: 16px;
+  color: #90a4ae;
+}
+
+.empty-content h3 {
+  margin: 0 0 8px 0;
+  font-weight: 600;
+  color: #455a64;
+}
+
+.text-muted {
+  margin: 0 0 24px 0;
+  color: #78909c;
+}
+
+.action-btn mat-icon {
+  margin-right: 8px;
+}

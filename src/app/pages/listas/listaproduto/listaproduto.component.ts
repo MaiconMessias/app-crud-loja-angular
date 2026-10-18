@@ -6,14 +6,15 @@ import { ProdutoService } from '../../../service/produto.service';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Router, RouterModule } from '@angular/router';
 import { Util } from '../../../util/util';
-import {MatButtonModule} from '@angular/material/button';
-import {MatCardModule} from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
 import { MessagesService } from '../../../service/messages.service';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-listaproduto',
   standalone: true,
-  imports: [FormsModule, CommonModule, RouterModule, MatCardModule, MatButtonModule],
+  imports: [FormsModule, CommonModule, RouterModule, MatCardModule, MatButtonModule, MatIconModule],
   templateUrl: './listaproduto.component.html',
   styleUrl: './listaproduto.component.css'
 })
