@@ -1,13 +1,9 @@
 <!-- TODO dialog para confirmação de exclusão -->
-<div class="page-container">
-  <!-- Título formatado usando a tipografia padrão -->
-  <h1 class="mat-headline-medium title-page">Lista de Produtos</h1>
-</div>  
-
 <div class="grid-listaproduto" *ngIf="listaProduto; else semProdutos">
 
     <!-- Topo da página com botão Novo -->
     <div class="page-header">
+      <h1 class="page-title">Lista de Produtos</h1>
       <button mat-raised-button color="primary" routerLink="novo/produto">
         <mat-icon>add</mat-icon>
         Novo
