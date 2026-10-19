@@ -14,6 +14,7 @@ import { MessagesService } from '../../../../service/messages.service';
 })
 export class NovoProdutoComponent {
   btnText = "Gravar Dados";
+  textTela = "Criar Dados";
 
   constructor(private router: Router,
               private produtoService: ProdutoService,

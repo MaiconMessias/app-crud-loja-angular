@@ -6,16 +6,18 @@ import { Produto } from '../../../../entities/Produto';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { MessagesService } from '../../../../service/messages.service';
+import { MatCardModule } from '@angular/material/card';
 
 @Component({
   selector: 'app-editar',
   standalone: true,
-  imports: [TemplateFormProdutoComponent, FormsModule, CommonModule, RouterModule],
+  imports: [TemplateFormProdutoComponent, FormsModule, CommonModule, RouterModule, MatCardModule],
   templateUrl: './editar.component.html',
   styleUrl: './editar.component.css'
 })
 export class EditarComponent implements OnInit {
   btnText = "Editar Dados";
+  textTela = "Editar Dados"
   produto!: Produto;
 
   constructor(private router: Router,

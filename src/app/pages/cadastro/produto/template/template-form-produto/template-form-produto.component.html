@@ -1,29 +1,71 @@
-<form (ngSubmit)="enviar()" [formGroup]="produtoForm" #formDir="ngForm" enctype="multipart/form-data">
-    <input type="hidden" formControlName="id">
-    <p>
-        <label for="titulo">Título</label>
-        <input type="text" placeholder="Coloque aqui um título" formControlName="titulo" required>
-    </p>
-    <p>
-        <label for="descricao">Descrição</label>
-        <input type="text" placeholder="Coloque aqui um descricao" formControlName="descricao" required>
-    </p>
-    <p>
-        <label for="preco">Preço</label>
-        <input type="text" placeholder="Coloque aqui um preco" formControlName="preco" required>
-    </p>
-    <p>
-        <label for="foto">Faça upload a imagem desejada</label>
-        <input type="file" (change)="onFileSelected($event)"/>
-    </p>
-    <!-- trata imagem carregada e exibe -->
-    <div *ngIf="produtoData && produtoData!.foto">
-        <img id="foto" [src]='trataImagem(produtoData!.foto)'/>
-    </div>
-    <!-- Exibe um preview da imagem ao escolher -->
-        <span id="h2-image"></span>
-    <p>
-        <input type="submit" value="{{ btnText }}">
-        <input type="button" value="Cancelar" (click)="cancelar()">
-    </p>
-</form>
+<div class="edit-container">
+  <mat-card class="edit-card" appearance="outlined">
+    
+    <mat-card-header>
+      <mat-card-title class="form-title">{{ textTela }}</mat-card-title>
+    </mat-card-header>
+
+
+    <mat-card-content>
+      <form (ngSubmit)="enviar()" [formGroup]="produtoForm" #formDir="ngForm" enctype="multipart/form-data" class="edit-form">
+        <input type="hidden" formControlName="id">
+
+        <!-- Campo: Título -->
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Título</mat-label>
+          <input matInput placeholder="Ex: Dr. Silva" formControlName="titulo" required>
+        </mat-form-field>
+
+        <!-- Campo: Descrição -->
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Descrição</mat-label>
+          <textarea matInput rows="3" placeholder="Coloque aqui uma descrição" formControlName="descricao" required></textarea>
+        </mat-form-field>
+
+        <!-- Campo: Preço -->
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Preço</mat-label>
+          <input matInput type="text" placeholder="0,00" formControlName="preco" required>
+          <span matPrefix>R$&nbsp;</span>
+        </mat-form-field>
+
+        <!-- Seção de Upload e Preview de Imagem -->
+        <div class="image-upload-section">
+          <label class="upload-label">Imagem do Produto</label>
+          
+          <div class="upload-controls">
+            <!-- Botão customizado para o Input File nativo -->
+            <button type="button" mat-stroked-button (click)="fileInput.click()">
+              <mat-icon>cloud_upload</mat-icon>
+              Selecionar Nova Imagem
+            </button>
+            <input #fileInput type="file" (change)="onFileSelected($event)" style="display: none;"/>
+          </div>
+
+          <!-- Preview da Imagem Existente ou Selecionada -->
+          <div class="image-preview-container" *ngIf="produtoData && produtoData!.foto">
+            <p class="preview-text">Visualização atual:</p>
+            <div class="image-box">
+              <img id="foto" [src]="trataImagem(produtoData!.foto)" alt="Preview do produto"/>
+            </div>
+          </div>
+          <span id="h2-image"></span>
+        </div>
+
+        <!-- Ações do Formulário (Botões) -->
+        <div class="form-actions">
+          <button mat-raised-button color="primary" type="submit" [disabled]="!produtoForm.valid">
+            <mat-icon>save</mat-icon>
+            {{ btnText }}
+          </button>
+          
+          <button mat-button type="button" (click)="cancelar()">
+            Cancelar
+          </button>
+        </div>
+
+      </form>
+    </mat-card-content>
+
+  </mat-card>
+</div>

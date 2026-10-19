@@ -1,4 +1,3 @@
 <div *ngIf="produto">
-    <p>Editar de Produto</p>
-    <app-template-form-produto [btnText]="btnText" (onSubmit)="editarProdutoHandler($event)" [produtoData]="produto"></app-template-form-produto>
+    <app-template-form-produto [btnText]="btnText" [textTela]="textTela" (onSubmit)="editarProdutoHandler($event)" [produtoData]="produto"></app-template-form-produto>
 </div>

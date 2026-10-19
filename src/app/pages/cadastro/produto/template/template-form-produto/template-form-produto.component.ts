@@ -5,17 +5,23 @@ import { BrowserModule } from '@angular/platform-browser';
 import { Router, RouterModule } from '@angular/router';
 import { Produto } from '../../../../../entities/Produto';
 import { Util } from '../../../../../util/util';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-template-form-produto',
   standalone: true,
-  imports: [FormsModule, ReactiveFormsModule, CommonModule, RouterModule],
+  imports: [FormsModule, ReactiveFormsModule, CommonModule, RouterModule, MatInputModule, MatButtonModule, MatCardModule, MatIconModule],
   templateUrl: './template-form-produto.component.html',
   styleUrl: './template-form-produto.component.css'
 })
 export class TemplateFormProdutoComponent implements OnInit {
   @Output() onSubmit = new EventEmitter<Produto>();
   @Input() btnText: string = '';
+  @Input() textTela: string = '';
   @Input() produtoData?: Produto | null = null;
   
   produtoForm!: FormGroup;
