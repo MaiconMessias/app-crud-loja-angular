@@ -2,11 +2,12 @@ import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { HeaderComponent } from './header/header.component';
 import { MessageComponent } from './pages/message/message.component';
+import { LoadingComponent } from './component/loading/loading.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, HeaderComponent, MessageComponent], // no angular 17 as importações são feitas aqui
+  imports: [RouterOutlet, HeaderComponent, MessageComponent, LoadingComponent], // no angular 17 as importações são feitas aqui
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
